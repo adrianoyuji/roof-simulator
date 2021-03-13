@@ -1,4 +1,3 @@
-import { useState, useCallback } from "react";
 import { createUseStyles } from "react-jss";
 import { useCanva } from "src/hooks/canva";
 
@@ -54,7 +53,7 @@ export default function CanvaControls() {
   const buttonList = [
     { title: "Ambiente", id: 0 },
     { title: "Cores", id: 1 },
-    { title: "Calcular Total", id: 2 },
+    { title: "Calcular Área", id: 2 },
   ];
 
   return (

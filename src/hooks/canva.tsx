@@ -46,19 +46,13 @@ export const CanvaProvider: React.FC = ({ children }) => {
     [setSelectedEnvironment]
   );
 
-  const handleChangeIndex = useCallback(
-    (index: number) => {
-      setCurrentIndex(index);
-    },
-    [currentIndex]
-  );
+  const handleChangeIndex = useCallback((index: number) => {
+    setCurrentIndex(index);
+  }, []);
 
-  const handleSelectColor = useCallback(
-    (hexCode: string) => {
-      setBackgroundColor(hexCode);
-    },
-    [backgroundColor]
-  );
+  const handleSelectColor = useCallback((hexCode: string) => {
+    setBackgroundColor(hexCode);
+  }, []);
 
   return (
     <CanvaContext.Provider

@@ -1,4 +1,3 @@
-import { useState, useCallback } from "react";
 import { createUseStyles } from "react-jss";
 import { useCanva } from "src/hooks/canva";
 
@@ -51,6 +50,7 @@ export default function EnvironmentSelector() {
           <img
             src={env.background}
             key={index}
+            alt={`ambiente-${index}`}
             className={classes.imageContainer}
             onClick={() => {
               handleSelectEnvironment(env);

@@ -2,8 +2,6 @@ import { CirclePicker } from "react-color";
 import { createUseStyles } from "react-jss";
 import { useCanva } from "src/hooks/canva";
 
-import ColorButton from "src/components/ColorButton";
-
 const useStyles = createUseStyles({
   environmentSelectorContainer: {
     display: "flex",

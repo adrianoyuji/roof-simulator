@@ -3,7 +3,11 @@ import { createUseStyles } from "react-jss";
 import { useCanva } from "src/hooks/canva";
 
 const useStyles = createUseStyles({
-  canvaScreen: { height: "100%", width: "70%", position: "relative" },
+  canvaScreen: {
+    width: "100%",
+    height: "100%",
+    position: "relative",
+  },
   canvaBg: {
     objectFit: "fill",
     height: "100%",

@@ -103,7 +103,9 @@ export default function AreaCalculator() {
 
   const renderProductAmount = () => {
     let value = Number(areaHeight);
-    value = value * 0.67 + 1;
+    if (value > 0) {
+      value = value * 0.67 + 1;
+    }
     return value.toFixed(0);
   };
 
@@ -159,21 +161,23 @@ export default function AreaCalculator() {
         <section className={classes.sectionStyle}>
           <label className={classes.subTitle}>Resultado</label>
           <table className={classes.tableStyle}>
-            <tr>
-              <th>Produto</th>
-              <th>Comprimento</th>
-              <th>Quantidade (lâmina)</th>
-            </tr>
-            <tr>
-              <td>Forro {bladeWidth}mm</td>
-              <td>{renderProductLength()}</td>
-              <td>{(Number(areaHeight) / (bladeWidth / 1000)).toFixed(0)}</td>
-            </tr>
-            <tr>
-              <td>Barras para acabamento</td>
-              <td>6m lineares</td>
-              <td>{renderProductAmount()}</td>
-            </tr>
+            <tbody>
+              <tr>
+                <th>Produto</th>
+                <th>Comprimento</th>
+                <th>Quantidade (lâmina)</th>
+              </tr>
+              <tr>
+                <td>Forro {bladeWidth}mm</td>
+                <td>{renderProductLength()}</td>
+                <td>{(Number(areaHeight) / (bladeWidth / 1000)).toFixed(0)}</td>
+              </tr>
+              <tr>
+                <td>Barras para acabamento</td>
+                <td>6m lineares</td>
+                <td>{renderProductAmount()}</td>
+              </tr>
+            </tbody>
           </table>
           <span className={classes.totalArea}>
             Área total: {(Number(areaHeight) * Number(areaWidth)).toFixed(2)} m²

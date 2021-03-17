@@ -11,6 +11,8 @@ const useStyles = createUseStyles({
     width: "100vw",
     backgroundColor: "#f5f5f5",
     fontFamily: "sans-serif",
+    overflowX: "hidden",
+    overflowY: "hidden",
   },
   body: { flex: 8, display: "flex", flexDirection: "row" },
 });

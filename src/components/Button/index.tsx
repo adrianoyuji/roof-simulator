@@ -12,6 +12,7 @@ interface Props {
 
 const useStyles = createUseStyles({
   unselectedButton: ({ color, textColor }) => ({
+    height: "1rem",
     borderWidth: "0.15rem",
     backgroundColor: color || "#111827",
     borderRadius: "8px",
@@ -32,6 +33,7 @@ const useStyles = createUseStyles({
     }),
   }),
   selectedButton: ({ color, textColor }) => ({
+    height: "2rem",
     boxSizing: "border-box",
     border: "solid",
     borderWidth: "0.15rem",

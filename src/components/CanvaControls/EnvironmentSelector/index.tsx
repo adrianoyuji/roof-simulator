@@ -26,7 +26,7 @@ const useStyles = createUseStyles({
     borderRadius: 4,
     objectFit: "cover",
     width: "100%",
-    height: 128,
+    height: window.innerHeight / 6,
     transition: "transform .2s",
     cursor: "pointer",
     "&:hover": {

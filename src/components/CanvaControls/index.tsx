@@ -14,6 +14,13 @@ const useStyles = createUseStyles({
     width: "30%",
     borderLeft: "solid",
     borderLeftColor: "#111827",
+    "@media (max-width:767px)": {
+      width: "100%",
+      borderLeft: "none",
+      borderLeftColor: "none",
+      borderTop: "solid",
+      borderTopColor: "#111827",
+    },
   },
   buttonsContainers: {
     display: "flex",
@@ -53,7 +60,7 @@ export default function CanvaControls() {
   const buttonList = [
     { title: "Ambiente", id: 0 },
     { title: "Cores", id: 1 },
-    { title: "Calcular Área", id: 2 },
+    { title: "Calculadora", id: 2 },
   ];
 
   return (

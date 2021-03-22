@@ -11,11 +11,12 @@ const useStyles = createUseStyles({
     display: "flex",
     flexDirection: "column",
     height: "100%",
-    width: "30%",
+    width: "33%",
     borderLeft: "solid",
     borderLeftColor: "#111827",
     "@media (max-width:767px)": {
       width: "100%",
+      height: "60vh",
       borderLeft: "none",
       borderLeftColor: "none",
       borderTop: "solid",

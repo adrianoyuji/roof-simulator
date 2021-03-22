@@ -2,11 +2,12 @@ import { useState, useCallback } from "react";
 import { createUseStyles } from "react-jss";
 
 const useStyles = createUseStyles({
-  environmentSelectorContainer: {
+  container: {
     display: "flex",
     flexDirection: "column",
     height: "100%",
     width: "100%%",
+    overflowY: "scroll",
     padding: "0.5rem",
   },
   sectionStyle: {
@@ -107,6 +108,13 @@ export default function AreaCalculator() {
 
     return (height + width).toFixed(0);
   };
+  const renderProductQuantity = () => {
+    let amount = Math.ceil(
+      (Number(areaHeight) * Number(areaWidth)) /
+        (Number(renderProductLength()) / 10)
+    );
+    return isNaN(amount) ? 0 : amount;
+  };
 
   const renderEmendaHAmount = () => {
     if (Number(areaWidth) > 0) {
@@ -126,7 +134,7 @@ export default function AreaCalculator() {
   };
 
   return (
-    <section className={classes.environmentSelectorContainer}>
+    <section className={classes.container}>
       <span className={classes.title}>Calculadora do Ambiente</span>
 
       <div className={classes.content}>
@@ -186,12 +194,7 @@ export default function AreaCalculator() {
               <tr>
                 <td>Forro {bladeWidth}mm</td>
                 <td>{renderProductLength()}</td>
-                <td>
-                  {Math.ceil(
-                    (Number(areaHeight) * Number(areaWidth)) /
-                      (Number(renderProductLength()) / 10)
-                  )}
-                </td>
+                <td>{renderProductQuantity()}</td>
               </tr>
               <tr>
                 <td>Barras para acabamento</td>

@@ -4,9 +4,13 @@ import { useCanva } from "src/hooks/canva";
 
 const useStyles = createUseStyles({
   canvaScreen: {
-    width: "100%",
+    width: "67%",
     height: "100%",
     position: "relative",
+    "@media (max-width:767px)": {
+      width: "100%",
+      height: "40vh",
+    },
   },
   canvaBg: {
     objectFit: "fill",

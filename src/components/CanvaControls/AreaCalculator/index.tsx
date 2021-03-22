@@ -32,7 +32,7 @@ const useStyles = createUseStyles({
     width: "100%%",
   },
   input: {
-    width: 48,
+    width: 42,
   },
   inputLabel: {
     paddingRight: 4,
@@ -93,7 +93,7 @@ export default function AreaCalculator() {
     while (condition) {
       if (value / divisor <= 9) {
         condition = false;
-        return (value / divisor).toFixed(2);
+        return (Math.ceil((value / divisor) * 10) / 10).toFixed(2);
       }
       divisor++;
     }
@@ -101,12 +101,28 @@ export default function AreaCalculator() {
     return value;
   };
 
-  const renderProductAmount = () => {
-    let value = Number(areaHeight);
-    if (value > 0) {
-      value = value * 0.67 + 1;
+  const renderAcabamentoAmount = () => {
+    let height = (Number(areaHeight) / 6) * 2;
+    let width = (Number(areaWidth) / 6) * 2;
+
+    return (height + width).toFixed(0);
+  };
+
+  const renderEmendaHAmount = () => {
+    if (Number(areaWidth) > 0) {
+      let colAmount = Math.ceil(
+        Number(areaWidth) / Number(renderProductLength())
+      );
+      console.log(colAmount);
+      if (colAmount > 1) {
+        let rowAmount = Number(areaHeight) / 6;
+        if (Number(areaHeight) % 6 > 0) {
+          rowAmount++;
+        }
+        return Math.floor(rowAmount) * (colAmount - 1);
+      }
     }
-    return value.toFixed(0);
+    return 0;
   };
 
   return (
@@ -143,7 +159,7 @@ export default function AreaCalculator() {
           </div>
 
           <div className={classes.heightContainer}>
-            <label className={classes.inputLabel}>Altura: </label>
+            <label className={classes.inputLabel}>Largura: </label>
             <input
               type="number"
               min={0}
@@ -170,12 +186,22 @@ export default function AreaCalculator() {
               <tr>
                 <td>Forro {bladeWidth}mm</td>
                 <td>{renderProductLength()}</td>
-                <td>{(Number(areaHeight) / (bladeWidth / 1000)).toFixed(0)}</td>
+                <td>
+                  {Math.ceil(
+                    (Number(areaHeight) * Number(areaWidth)) /
+                      (Number(renderProductLength()) / 10)
+                  )}
+                </td>
               </tr>
               <tr>
                 <td>Barras para acabamento</td>
                 <td>6m lineares</td>
-                <td>{renderProductAmount()}</td>
+                <td>{renderAcabamentoAmount()}</td>
+              </tr>
+              <tr>
+                <td>Emenda H</td>
+                <td>6m</td>
+                <td>{renderEmendaHAmount()}</td>
               </tr>
             </tbody>
           </table>

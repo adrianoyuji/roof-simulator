@@ -35,9 +35,7 @@ export default function ColorSelector() {
   return (
     <section className={classes.environmentSelectorContainer}>
       <div className={classes.content}>
-        <span className={classes.title}>Selecione o Forro</span>
-        <div className={classes.buttonContainer}></div>
-        <span className={classes.title}>Cor do Ambiente</span>
+        <span className={classes.title}>Selecione a cor do Forro</span>
         <div className={classes.buttonContainer}>
           <CirclePicker
             color={backgroundColor}

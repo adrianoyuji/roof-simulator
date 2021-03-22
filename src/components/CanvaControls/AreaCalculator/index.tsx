@@ -111,7 +111,8 @@ export default function AreaCalculator() {
   const renderProductQuantity = () => {
     let amount = Math.ceil(
       (Number(areaHeight) * Number(areaWidth)) /
-        (Number(renderProductLength()) / 10)
+        (Number(renderProductLength()) / 10) /
+        (bladeWidth / 100)
     );
     return isNaN(amount) ? 0 : amount;
   };
@@ -177,7 +178,7 @@ export default function AreaCalculator() {
             />{" "}
             m
             <img
-              src="https://www.plastilit.com.br/imagens/simulador/horizontal.png"
+              src={process.env.PUBLIC_URL + "/images/horizontal.png"}
               alt="orientacao"
             />
           </div>

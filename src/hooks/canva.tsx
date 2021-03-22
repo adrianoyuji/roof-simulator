@@ -15,21 +15,18 @@ const CanvaContext = createContext<CanvaContextData>({} as CanvaContextData);
 
 const envList: Environment[] = [
   {
-    background: process.env.PUBLIC_URL + "/images/background.jpg",
-    roof: process.env.PUBLIC_URL + "/images/roof.png",
-    furniture: process.env.PUBLIC_URL + "/images/furniture.png",
+    background: process.env.PUBLIC_URL + "/images/cozinha.png",
+    furniture: process.env.PUBLIC_URL + "/images/cozinha-moveis.png",
   },
   {
-    background: process.env.PUBLIC_URL + "/images/background2.jpg",
-    roof: process.env.PUBLIC_URL + "/images/roof.png",
-    furniture: process.env.PUBLIC_URL + "/images/furniture.png",
+    background: process.env.PUBLIC_URL + "/images/quarto.jpg",
+    furniture: process.env.PUBLIC_URL + "/images/quarto-moveis.png",
   },
 ];
 
-const initial_enviroment = {
-  background: process.env.PUBLIC_URL + "/images/background.jpg",
-  roof: process.env.PUBLIC_URL + "/images/roof.png",
-  furniture: process.env.PUBLIC_URL + "/images/furniture.png",
+const initial_enviroment: Environment = {
+  background: process.env.PUBLIC_URL + "/images/cozinha.png",
+  furniture: process.env.PUBLIC_URL + "/images/cozinha-moveis.png",
 };
 
 export const CanvaProvider: React.FC = ({ children }) => {

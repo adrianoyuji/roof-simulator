@@ -7,7 +7,7 @@ const useStyles = createUseStyles({
   app: {
     display: "flex",
     flexDirection: "column",
-    height: "100vh",
+    height: window.innerHeight || "100vh",
     width: "100vw",
     backgroundColor: "#f5f5f5",
     fontFamily: "sans-serif",

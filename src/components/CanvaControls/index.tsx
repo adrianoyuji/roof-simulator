@@ -16,7 +16,7 @@ const useStyles = createUseStyles({
     borderLeftColor: "#111827",
     "@media (max-width:767px)": {
       width: "100%",
-      height: "60vh",
+      height: window.innerHeight * 0.6 || "60vh",
       borderLeft: "none",
       borderLeftColor: "none",
       borderTop: "solid",

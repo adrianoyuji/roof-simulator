@@ -9,7 +9,7 @@ const useStyles = createUseStyles({
     position: "relative",
     "@media (max-width:767px)": {
       width: "100%",
-      height: "40vh",
+      height: window.innerHeight * 0.4 || "40vh",
     },
   },
   canvaBg: {
@@ -21,7 +21,7 @@ const useStyles = createUseStyles({
   overlay: ({ backgroundColor }) => ({
     height: "100%",
     width: "100%",
-    opacity: "0.75",
+    opacity: "0.4",
     background: backgroundColor || "none",
     position: "absolute",
   }),
@@ -50,11 +50,7 @@ export default function Canva() {
         src={selectedEnvironment.background}
       />
       <div className={classes.overlay} />
-      <img
-        className={classes.canvaRoof}
-        alt="roof"
-        src={selectedEnvironment.roof}
-      />
+
       <img
         className={classes.canvaFurniture}
         alt="furniture"

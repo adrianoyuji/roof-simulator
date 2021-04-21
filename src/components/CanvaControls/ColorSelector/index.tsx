@@ -33,6 +33,7 @@ const useStyles = createUseStyles({
 export default function ColorSelector() {
   const classes = useStyles();
   const { handleSelectColor, backgroundColor } = useCanva();
+  console.log(backgroundColor);
   return (
     <section className={classes.environmentSelectorContainer}>
       <div className={classes.content}>
@@ -40,7 +41,7 @@ export default function ColorSelector() {
         <div className={classes.buttonContainer}>
           <CirclePicker
             color={backgroundColor}
-            colors={["#a2a2a2", "#727981", "#6a3a2c", "#9b7a5b", "#694737"]}
+            colors={["#ffffff", "#727981", "#6a3a2c", "#9b7a5b", "#694737"]}
             onChange={(color) => handleSelectColor(color.hex)}
           />
         </div>

@@ -7,7 +7,7 @@ const useStyles = createUseStyles({
     display: "flex",
     flexDirection: "column",
     height: "100%",
-    width: "100%%",
+    width: "100%",
     padding: "0.5rem",
   },
   title: {
@@ -20,9 +20,10 @@ const useStyles = createUseStyles({
     display: "flex",
     flexDirection: "column",
     height: "100%",
-    width: "100%%",
+    width: "100%",
   },
   buttonContainer: {
+    marginTop: "1rem",
     width: "100%",
     display: "flex",
     justifyContent: "center",
@@ -39,6 +40,7 @@ export default function ColorSelector() {
         <div className={classes.buttonContainer}>
           <CirclePicker
             color={backgroundColor}
+            colors={["#a9a9a9", "#727981", "#6a3a2c", "#9b7a5b", "#694737"]}
             onChange={(color) => handleSelectColor(color.hex)}
           />
         </div>

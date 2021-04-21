@@ -22,7 +22,7 @@ const useStyles = createUseStyles({
   overlay: ({ backgroundColor }) => ({
     height: "100%",
     width: "100%",
-    opacity: "0.525",
+    opacity: "0.66",
     background: backgroundColor || "none",
     position: "absolute",
     display: ({ loadingCanva }: any) => (loadingCanva ? "none" : ""),

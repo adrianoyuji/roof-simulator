@@ -40,7 +40,7 @@ export default function ColorSelector() {
         <div className={classes.buttonContainer}>
           <CirclePicker
             color={backgroundColor}
-            colors={["#a9a9a9", "#727981", "#6a3a2c", "#9b7a5b", "#694737"]}
+            colors={["#a2a2a2", "#727981", "#6a3a2c", "#9b7a5b", "#694737"]}
             onChange={(color) => handleSelectColor(color.hex)}
           />
         </div>

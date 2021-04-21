@@ -46,7 +46,7 @@ const initial_enviroment: Environment = {
 export const CanvaProvider: React.FC = ({ children }) => {
   const [loadingCanva, setLoadingCanva] = useState<boolean>(true);
   const [currentIndex, setCurrentIndex] = useState<number>(0);
-  const [backgroundColor, setBackgroundColor] = useState<string>("#a9a9a9");
+  const [backgroundColor, setBackgroundColor] = useState<string>("#a2a2a2");
   const [selectedEnvironment, setSelectedEnvironment] = useState<Environment>({
     ...initial_enviroment,
   });
@@ -68,10 +68,12 @@ export const CanvaProvider: React.FC = ({ children }) => {
 
   const handleSelectEnvironment = useCallback(
     (env: Environment) => {
-      setLoadingCanva(true);
-      setSelectedEnvironment({ ...env });
+      if (env.background !== selectedEnvironment.background) {
+        setLoadingCanva(true);
+        setSelectedEnvironment({ ...env });
+      }
     },
-    [setSelectedEnvironment, setLoadingCanva]
+    [setSelectedEnvironment, setLoadingCanva, selectedEnvironment]
   );
 
   const handleChangeIndex = useCallback((index: number) => {

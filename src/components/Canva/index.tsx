@@ -17,37 +17,42 @@ const useStyles = createUseStyles({
     height: "100%",
     width: "100%",
     position: "absolute",
+    display: ({ loadingCanva }: any) => (loadingCanva ? "none" : ""),
   },
   overlay: ({ backgroundColor }) => ({
     height: "100%",
     width: "100%",
-    opacity: "0.4",
+    opacity: "0.525",
     background: backgroundColor || "none",
     position: "absolute",
+    display: ({ loadingCanva }: any) => (loadingCanva ? "none" : ""),
   }),
-  canvaRoof: {
-    objectFit: "fill",
-    height: "100%",
-    width: "100%",
-    position: "absolute",
-  },
+
   canvaFurniture: {
     objectFit: "fill",
     height: "100%",
     width: "100%",
     position: "absolute",
+    display: ({ loadingCanva }: any) => (loadingCanva ? "none" : ""),
   },
 });
 
 export default function Canva() {
-  const { selectedEnvironment, backgroundColor, windowHeight } = useCanva();
-  const classes = useStyles({ backgroundColor, windowHeight });
+  const {
+    selectedEnvironment,
+    backgroundColor,
+    windowHeight,
+    loadingCanva,
+    setLoadingCanva,
+  } = useCanva();
+  const classes = useStyles({ backgroundColor, windowHeight, loadingCanva });
   return (
     <div className={classes.canvaScreen}>
       <img
         className={classes.canvaBg}
         alt="background"
         src={selectedEnvironment.background}
+        onLoad={() => setLoadingCanva(false)}
       />
       <div className={classes.overlay} />
 

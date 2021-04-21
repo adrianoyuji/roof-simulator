@@ -17,6 +17,8 @@ interface CanvaContextData {
   handleSelectColor(hexCode: string): void;
   windowHeight: number;
   windowWidth: number;
+  loadingCanva: boolean;
+  setLoadingCanva(bool: boolean): void;
 }
 
 const CanvaContext = createContext<CanvaContextData>({} as CanvaContextData);
@@ -42,8 +44,9 @@ const initial_enviroment: Environment = {
 };
 
 export const CanvaProvider: React.FC = ({ children }) => {
+  const [loadingCanva, setLoadingCanva] = useState<boolean>(true);
   const [currentIndex, setCurrentIndex] = useState<number>(0);
-  const [backgroundColor, setBackgroundColor] = useState<string>("#FFF");
+  const [backgroundColor, setBackgroundColor] = useState<string>("#a9a9a9");
   const [selectedEnvironment, setSelectedEnvironment] = useState<Environment>({
     ...initial_enviroment,
   });
@@ -65,9 +68,10 @@ export const CanvaProvider: React.FC = ({ children }) => {
 
   const handleSelectEnvironment = useCallback(
     (env: Environment) => {
+      setLoadingCanva(true);
       setSelectedEnvironment({ ...env });
     },
-    [setSelectedEnvironment]
+    [setSelectedEnvironment, setLoadingCanva]
   );
 
   const handleChangeIndex = useCallback((index: number) => {
@@ -90,6 +94,8 @@ export const CanvaProvider: React.FC = ({ children }) => {
         handleSelectColor,
         windowHeight,
         windowWidth,
+        loadingCanva,
+        setLoadingCanva,
       }}
     >
       {children}

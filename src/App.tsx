@@ -10,7 +10,7 @@ const useStyles = createUseStyles({
     flexDirection: "column",
     height: ({ windowHeight }: any) => windowHeight || "100vh",
     width: "100vw",
-    backgroundColor: "#f5f5f5",
+    backgroundColor: "#e5e5e5",
     fontFamily: "sans-serif",
     overflowX: "hidden",
     overflowY: "hidden",

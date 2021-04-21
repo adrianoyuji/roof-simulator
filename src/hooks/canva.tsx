@@ -46,7 +46,7 @@ const initial_enviroment: Environment = {
 export const CanvaProvider: React.FC = ({ children }) => {
   const [loadingCanva, setLoadingCanva] = useState<boolean>(true);
   const [currentIndex, setCurrentIndex] = useState<number>(0);
-  const [backgroundColor, setBackgroundColor] = useState<string>("#a2a2a2");
+  const [backgroundColor, setBackgroundColor] = useState<string>("#ffffff");
   const [selectedEnvironment, setSelectedEnvironment] = useState<Environment>({
     ...initial_enviroment,
   });

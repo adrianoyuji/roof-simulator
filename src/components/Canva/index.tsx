@@ -22,7 +22,7 @@ const useStyles = createUseStyles({
   overlay: ({ backgroundColor }) => ({
     height: "100%",
     width: "100%",
-    opacity: "0.66",
+    opacity: backgroundColor === "#ffffff" ? "0" : "0.5",
     background: backgroundColor || "none",
     position: "absolute",
     display: ({ loadingCanva }: any) => (loadingCanva ? "none" : ""),
@@ -46,6 +46,7 @@ export default function Canva() {
     setLoadingCanva,
   } = useCanva();
   const classes = useStyles({ backgroundColor, windowHeight, loadingCanva });
+  console.log(backgroundColor);
   return (
     <div className={classes.canvaScreen}>
       <img

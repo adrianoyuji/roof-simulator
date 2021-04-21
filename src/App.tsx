@@ -1,13 +1,14 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { createUseStyles } from "react-jss";
 import Header from "src/components/ui/Header";
 import Body from "src/components/ui/Body";
+import { useCanva } from "./hooks/canva";
 
 const useStyles = createUseStyles({
   app: {
     display: "flex",
     flexDirection: "column",
-    height: window.innerHeight || "100vh",
+    height: ({ windowHeight }: any) => windowHeight || "100vh",
     width: "100vw",
     backgroundColor: "#f5f5f5",
     fontFamily: "sans-serif",
@@ -18,7 +19,9 @@ const useStyles = createUseStyles({
 });
 
 const App = () => {
-  const classes = useStyles();
+  const { windowHeight } = useCanva();
+  const classes = useStyles({ windowHeight });
+
   return (
     <main className={classes.app}>
       <Header />

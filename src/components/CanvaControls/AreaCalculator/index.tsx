@@ -122,7 +122,6 @@ export default function AreaCalculator() {
       let colAmount = Math.ceil(
         Number(areaWidth) / Number(renderProductLength())
       );
-      console.log(colAmount);
       if (colAmount > 1) {
         let rowAmount = Number(areaHeight) / 6;
         if (Number(areaHeight) % 6 > 0) {
@@ -202,11 +201,11 @@ export default function AreaCalculator() {
                 <td>6m lineares</td>
                 <td>{renderAcabamentoAmount()}</td>
               </tr>
-              <tr>
+              {/* <tr>
                 <td>Emenda H</td>
                 <td>6m</td>
                 <td>{renderEmendaHAmount()}</td>
-              </tr>
+              </tr> */}
             </tbody>
           </table>
           <span className={classes.totalArea}>

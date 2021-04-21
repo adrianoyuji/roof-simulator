@@ -1,4 +1,10 @@
-import React, { createContext, useState, useContext, useCallback } from "react";
+import React, {
+  createContext,
+  useState,
+  useContext,
+  useCallback,
+  useEffect,
+} from "react";
 import Environment from "src/interfaces/Environment";
 
 interface CanvaContextData {
@@ -9,6 +15,8 @@ interface CanvaContextData {
   handleSelectEnvironment(env: Environment): void;
   handleChangeIndex(index: number): void;
   handleSelectColor(hexCode: string): void;
+  windowHeight: number;
+  windowWidth: number;
 }
 
 const CanvaContext = createContext<CanvaContextData>({} as CanvaContextData);
@@ -19,8 +27,12 @@ const envList: Environment[] = [
     furniture: process.env.PUBLIC_URL + "/images/cozinha-moveis.png",
   },
   {
-    background: process.env.PUBLIC_URL + "/images/quarto.jpg",
-    furniture: process.env.PUBLIC_URL + "/images/quarto-moveis.png",
+    background: process.env.PUBLIC_URL + "/images/garagem.jpg",
+    furniture: process.env.PUBLIC_URL + "/images/garagem-moveis.png",
+  },
+  {
+    background: process.env.PUBLIC_URL + "/images/sala.jpg",
+    furniture: process.env.PUBLIC_URL + "/images/sala-moveis.png",
   },
 ];
 
@@ -35,6 +47,21 @@ export const CanvaProvider: React.FC = ({ children }) => {
   const [selectedEnvironment, setSelectedEnvironment] = useState<Environment>({
     ...initial_enviroment,
   });
+  const [windowWidth, setWindowWidth] = useState<number>(0);
+  const [windowHeight, setWindowHeight] = useState<number>(0);
+  useEffect(() => {
+    function updateSize() {
+      setWindowHeight(window.innerHeight);
+      setWindowWidth(window.innerWidth);
+    }
+
+    window.addEventListener("resize", updateSize);
+
+    updateSize();
+    return () => {
+      window.removeEventListener("resize", updateSize);
+    };
+  }, []);
 
   const handleSelectEnvironment = useCallback(
     (env: Environment) => {
@@ -61,6 +88,8 @@ export const CanvaProvider: React.FC = ({ children }) => {
         handleSelectEnvironment,
         handleChangeIndex,
         handleSelectColor,
+        windowHeight,
+        windowWidth,
       }}
     >
       {children}

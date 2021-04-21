@@ -16,7 +16,7 @@ const useStyles = createUseStyles({
     borderLeftColor: "#111827",
     "@media (max-width:767px)": {
       width: "100%",
-      height: window.innerHeight * 0.6 || "60vh",
+      height: ({ windowHeight }: any) => windowHeight * 0.6 || "60vh",
       borderLeft: "none",
       borderLeftColor: "none",
       borderTop: "solid",
@@ -41,9 +41,9 @@ const useStyles = createUseStyles({
 });
 
 export default function CanvaControls() {
-  const { currentIndex, handleChangeIndex } = useCanva();
+  const { currentIndex, handleChangeIndex, windowHeight } = useCanva();
 
-  const classes = useStyles();
+  const classes = useStyles({ windowHeight });
 
   const renderSection = () => {
     switch (currentIndex) {

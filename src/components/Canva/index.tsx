@@ -9,7 +9,7 @@ const useStyles = createUseStyles({
     position: "relative",
     "@media (max-width:767px)": {
       width: "100%",
-      height: window.innerHeight * 0.4 || "40vh",
+      height: ({ windowHeight }: any) => windowHeight * 0.4 || "40vh",
     },
   },
   canvaBg: {
@@ -40,8 +40,8 @@ const useStyles = createUseStyles({
 });
 
 export default function Canva() {
-  const { selectedEnvironment, backgroundColor } = useCanva();
-  const classes = useStyles({ backgroundColor });
+  const { selectedEnvironment, backgroundColor, windowHeight } = useCanva();
+  const classes = useStyles({ backgroundColor, windowHeight });
   return (
     <div className={classes.canvaScreen}>
       <img

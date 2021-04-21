@@ -17,16 +17,14 @@ const useStyles = createUseStyles({
   },
   content: {
     display: "grid",
-    gridTemplateColumns: "1fr 1fr",
+    gridTemplateColumns: "50% 50%",
     gridGap: 8,
-    height: "100%",
-    width: "100%",
   },
   imageContainer: {
     borderRadius: 4,
     objectFit: "cover",
     width: "100%",
-    height: window.innerHeight / 6,
+    height: ({ windowHeight }: any) => windowHeight / 6,
     transition: "transform .2s",
     cursor: "pointer",
     "&:hover": {
@@ -39,8 +37,13 @@ const useStyles = createUseStyles({
 });
 
 export default function EnvironmentSelector() {
-  const { handleSelectEnvironment, envList, handleChangeIndex } = useCanva();
-  const classes = useStyles();
+  const {
+    handleSelectEnvironment,
+    envList,
+    handleChangeIndex,
+    windowHeight,
+  } = useCanva();
+  const classes = useStyles({ windowHeight });
 
   return (
     <section className={classes.environmentSelectorContainer}>

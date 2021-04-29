@@ -1,4 +1,3 @@
-import React from "react";
 import { createUseStyles } from "react-jss";
 import { useCanva } from "src/hooks/canva";
 
@@ -9,26 +8,20 @@ const useStyles = createUseStyles({
     position: "relative",
     "@media (max-width:767px)": {
       width: "100%",
-      height: ({ windowHeight }: any) => windowHeight * 0.4 || "40vh",
+      height: ({ windowHeight }: any) => windowHeight * 0.55 || "55vh",
     },
   },
-  canvaBg: {
-    objectFit: "fill",
+
+  overlay: ({ backgroundColor, loadingCanva }) => ({
     height: "100%",
     width: "100%",
-    position: "absolute",
-    display: ({ loadingCanva }: any) => (loadingCanva ? "none" : ""),
-  },
-  overlay: ({ backgroundColor }) => ({
-    height: "100%",
-    width: "100%",
-    opacity: backgroundColor === "#ffffff" ? "0" : "0.5",
+    opacity: "0.555",
     background: backgroundColor || "none",
     position: "absolute",
-    display: ({ loadingCanva }: any) => (loadingCanva ? "none" : ""),
+    display: loadingCanva ? "none" : "",
   }),
 
-  canvaFurniture: {
+  objectOverlay: {
     objectFit: "fill",
     height: "100%",
     width: "100%",
@@ -44,23 +37,29 @@ export default function Canva() {
     windowHeight,
     loadingCanva,
     setLoadingCanva,
+    ceilingColor,
   } = useCanva();
   const classes = useStyles({ backgroundColor, windowHeight, loadingCanva });
-  console.log(backgroundColor);
   return (
     <div className={classes.canvaScreen}>
       <img
-        className={classes.canvaBg}
-        alt="background"
-        src={selectedEnvironment.background}
+        className={classes.objectOverlay}
+        alt="furniture"
+        src={selectedEnvironment.walls}
         onLoad={() => setLoadingCanva(false)}
       />
       <div className={classes.overlay} />
-
       <img
-        className={classes.canvaFurniture}
+        className={classes.objectOverlay}
+        alt="furniture"
+        src={selectedEnvironment.colors[ceilingColor].color}
+        onLoad={() => setLoadingCanva(false)}
+      />
+      <img
+        className={classes.objectOverlay}
         alt="furniture"
         src={selectedEnvironment.furniture}
+        onLoad={() => setLoadingCanva(false)}
       />
     </div>
   );

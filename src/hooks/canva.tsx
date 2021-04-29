@@ -7,6 +7,8 @@ import React, {
 } from "react";
 import Environment from "src/interfaces/Environment";
 
+import envList from "src/utils/environments";
+
 interface CanvaContextData {
   selectedEnvironment: Environment;
   envList: Environment[];
@@ -19,36 +21,19 @@ interface CanvaContextData {
   windowWidth: number;
   loadingCanva: boolean;
   setLoadingCanva(bool: boolean): void;
+  ceilingColor: number;
+  setCeilingColor(num: number): void;
 }
 
 const CanvaContext = createContext<CanvaContextData>({} as CanvaContextData);
-
-const envList: Environment[] = [
-  {
-    background: process.env.PUBLIC_URL + "/images/cozinha.png",
-    furniture: process.env.PUBLIC_URL + "/images/cozinha-moveis.png",
-  },
-  {
-    background: process.env.PUBLIC_URL + "/images/garagem.jpg",
-    furniture: process.env.PUBLIC_URL + "/images/garagem-moveis.png",
-  },
-  {
-    background: process.env.PUBLIC_URL + "/images/sala.jpg",
-    furniture: process.env.PUBLIC_URL + "/images/sala-moveis.png",
-  },
-];
-
-const initial_enviroment: Environment = {
-  background: process.env.PUBLIC_URL + "/images/cozinha.png",
-  furniture: process.env.PUBLIC_URL + "/images/cozinha-moveis.png",
-};
 
 export const CanvaProvider: React.FC = ({ children }) => {
   const [loadingCanva, setLoadingCanva] = useState<boolean>(true);
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [backgroundColor, setBackgroundColor] = useState<string>("#ffffff");
+  const [ceilingColor, setCeilingColor] = useState<number>(0);
   const [selectedEnvironment, setSelectedEnvironment] = useState<Environment>({
-    ...initial_enviroment,
+    ...envList[0],
   });
   const [windowWidth, setWindowWidth] = useState<number>(0);
   const [windowHeight, setWindowHeight] = useState<number>(0);
@@ -68,7 +53,7 @@ export const CanvaProvider: React.FC = ({ children }) => {
 
   const handleSelectEnvironment = useCallback(
     (env: Environment) => {
-      if (env.background !== selectedEnvironment.background) {
+      if (env.preview !== selectedEnvironment.preview) {
         setLoadingCanva(true);
         setSelectedEnvironment({ ...env });
       }
@@ -98,6 +83,8 @@ export const CanvaProvider: React.FC = ({ children }) => {
         windowWidth,
         loadingCanva,
         setLoadingCanva,
+        ceilingColor,
+        setCeilingColor,
       }}
     >
       {children}

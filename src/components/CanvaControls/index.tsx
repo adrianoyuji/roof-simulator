@@ -16,7 +16,7 @@ const useStyles = createUseStyles({
     borderLeftColor: "#111827",
     "@media (max-width:767px)": {
       width: "100%",
-      height: ({ windowHeight }: any) => windowHeight * 0.6 || "60vh",
+      height: ({ windowHeight }: any) => windowHeight * 0.45 || "45vh",
       borderLeft: "none",
       borderLeftColor: "none",
       borderTop: "solid",
@@ -35,8 +35,10 @@ const useStyles = createUseStyles({
     width: "100%",
     height: "100%",
     justifyContent: "space-between",
-    overflowY: "scroll",
-    overflowX: "hidden",
+    overflow: "hidden",
+    "@media (max-width:767px)": {
+      overflowY: "scroll",
+    },
   },
 });
 

@@ -79,7 +79,7 @@ const bladeWidthList = [
 
 export default function AreaCalculator() {
   const classes = useStyles();
-  const [bladeWidth, setBladeWidth] = useState<number>(100);
+  const [bladeWidth, setBladeWidth] = useState<number>(200);
   const [areaWidth, setAreaWidth] = useState<string>("");
   const [areaHeight, setAreaHeight] = useState<string>("");
 
@@ -139,7 +139,7 @@ export default function AreaCalculator() {
 
       <div className={classes.content}>
         <section className={classes.sectionStyle}>
-          <label className={classes.subTitle}>
+          {/*  <label className={classes.subTitle}>
             Selecione a largura da Lâmina
           </label>
           <select name="bladeWidth" onChange={handleBladeSelect}>
@@ -148,7 +148,8 @@ export default function AreaCalculator() {
                 {item.title}
               </option>
             ))}
-          </select>
+          </select> */}
+          <label className={classes.subTitle}>Largura da Lâmina: 20cm</label>
         </section>
         <section className={classes.sectionStyle}>
           <span className={classes.subTitle}>

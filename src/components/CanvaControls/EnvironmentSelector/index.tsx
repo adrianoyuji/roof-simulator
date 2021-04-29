@@ -6,7 +6,7 @@ const useStyles = createUseStyles({
     display: "flex",
     flexDirection: "column",
     height: "100%",
-    width: "100%%",
+    width: "100%",
     padding: "0.5rem",
   },
   title: {
@@ -51,7 +51,7 @@ export default function EnvironmentSelector() {
       <div className={classes.content}>
         {envList.map((env, index) => (
           <img
-            src={env.background}
+            src={env.preview}
             key={index}
             alt={`ambiente-${index}`}
             className={classes.imageContainer}
